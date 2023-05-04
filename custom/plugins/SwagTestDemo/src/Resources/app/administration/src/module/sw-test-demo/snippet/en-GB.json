@@ -1,0 +1,52 @@
+{
+  "sw-test-demo": {
+    "general": {
+      "mainMenuItemList": "TestDemos",
+      "mainMenuItemGeneral": "TestDemos",
+      "placeholderSearchBar": "Search TestDemos..."
+    },
+    "list": {
+      "textTestdemoOverview": "Test Demo",
+      "textTotalTest": "No TestDemos | One test | {count} TestDemos",
+      "buttonAddTestdemo": "Add test",
+      "columnName": "Name",
+      "columnCity": "City",
+      "columnCountryStateId": "State",
+      "columnMediaId" : "Media",
+        "columnActive" : "Active",
+      "columnCountryId": "Country",
+      "columnProductId": "Product"
+    },
+    "detail": {
+      "textHeadline": "New test",
+      "textMediaSelection": "Media selection",
+      "buttonCancel": "Cancel",
+      "buttonSave": "Save",
+      "cardTitleTestdemoInfo" : "Test information",
+      "labelName": "Name",
+      "labelCountryId": "Country",
+      "labelCity": "City",
+      "labelCountryStateId": "State",
+      "labelMediaId": "Media",
+      "labelProductId": "Product",
+      "labelActive": "Active",
+      "placeholderName": "Enter your name...",
+      "placeholderCity": "Enter city name...",
+      "placeholderActive": "Active",
+        "placeholderCountryId": "Enter country name...",
+        "placeholderCountryStateId": "Enter state name...",
+        "placeholderProductId": "Enter product name ...",
+
+        "messageSaveSuccess": "Test \"{name}\" has been saved.",
+
+      "labelUseAsLogo": "Use as Logo"
+    }
+  },
+  "sw-privileges": {
+    "permissions": {
+      "test_demo": {
+        "label": "TestDemos"
+      }
+    }
+  }
+}

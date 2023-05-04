@@ -1,0 +1,126 @@
+{% block sw_test_demo_list %}
+    <sw-page class="sw-test-demo-list">
+        {% block sw_test_demo_list_search_bar %}
+            <template #search-bar>
+                <sw-search-bar
+                        initial-search-type="test_demo"
+                        :initial-search="term"
+                        @search="onSearch"
+                />
+            </template>
+        {% endblock %}
+
+        {% block sw_test_demo_list_smart_bar_header %}
+            <template #smart-bar-header>
+                {% block sw_test_demo_list_smart_bar_header_title %}
+                    <h2>
+                        {% block sw_test_demo_list_smart_bar_header_title_text %}
+                            {{ $tc('sw-test-demo.list.textTestdemoOverview') }}
+                        {% endblock %}
+
+                        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                        {% block sw_test_demo_list_smart_bar_header_amount %}
+                            <span
+                                    v-if="!isLoading"
+                                    class="sw-page__smart-bar-amount"
+                            >
+                ({{ total }})
+            </span>
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_test_demo_list_actions %}
+            <template #smart-bar-actions>
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_test_demo_list_smart_bar_actions %}
+                    <sw-button
+                            v-tooltip.bottom="{
+                message: $tc('sw-privileges.tooltip.warning'),
+                disabled: acl.can('test_demo.creator'),
+                showOnDisabledElements: true
+            }"
+                            :router-link="{ name: 'sw.test.demo.create' }"
+                            :disabled="!acl.can('test_demo.creator')"
+                            class="sw-test-demo-list__add-testdemo"
+                            variant="primary"
+                    >
+                        {{ $tc('sw-test-demo.list.buttonAddTestdemo') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_test_demo_list_language_switch %}
+            <template #language-switch>
+                <sw-language-switch @on-change="onChangeLanguage" />
+            </template>
+        {% endblock %}
+
+        <template #content>
+            <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+            {% block sw_test_demo_list_content %}
+                <div class="sw-test-demo-list__content">
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_test_demo_list_grid %}
+                        <sw-entity-listing
+                                v-if="entitySearchable"
+                                class="sw-test-demo-list__grid"
+                                detail-route="sw.test.demo.detail"
+                                :is-loading="isLoading"
+                                :columns="testdemoColumns"
+                                :repository="testdemoRepository"
+                                :items="testdemos"
+                                :criteria-limit="limit"
+                                :sort-by="currentSortBy"
+                                :sort-direction="sortDirection"
+                                :disable-data-fetching="true"
+                                :allow-edit="acl.can('test_demo.editor')"
+                                :allow-inline-edit="acl.can('test_demo.editor')"
+                                :allow-delete="acl.can('test_demo.deleter')"
+                                :show-selections="acl.can('test_demo.deleter')"
+                                identifier="sw-test-demo-list"
+                                @update-records="updateTotal"
+                                @page-change="onPageChange"
+                                @column-sort="onSortColumn"
+                        >
+                            {% block sw_test_demo_list_grid_columns_name_preview %}
+                                <template #preview-name="{ item }">
+                                    <sw-media-preview-v2 :source="item.mediaId" />
+                                </template>
+                            {% endblock %}
+                        </sw-entity-listing>
+                    {% endblock %}
+
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_test_demo_list_empty_state %}
+                        <sw-empty-state
+                                v-if="!isLoading && !total && isValidTerm(term)"
+                                :title="$tc('sw-empty-state.messageNoResultTitle')"
+                        >
+                            <template #default>
+                                {{ $tc('sw-empty-state.messageNoResultSublineBefore') }}
+                                <router-link
+                                        class="sw-empty-state__description-link"
+                                        :to="{ name: 'sw.profile.index.searchPreferences' }"
+                                >
+                                    {{ $tc('sw-empty-state.messageNoResultSublineLink') }}
+                                </router-link>
+                                {{ $tc('sw-empty-state.messageNoResultSublineAfter') }}
+                            </template>
+                        </sw-empty-state>
+                    {% endblock %}
+
+                    {# @deprecated tag:v6.5.0 - Will be removed #}
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_test_demo_list_grid_loader %}{% endblock %}
+                </div>
+            {% endblock %}
+
+        </template>
+    </sw-page>
+{% endblock %}

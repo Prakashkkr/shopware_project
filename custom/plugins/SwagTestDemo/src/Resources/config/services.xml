@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <!-- Definition -->
+        <service id="SwagTestDemo\Core\Content\TestDemo\TestDemoDefinition">
+            <tag name="shopware.entity.definition" entity="swag_test_demo"/>
+        </service>
+
+        <!-- Translation -->
+        <service id="SwagTestDemo\Core\Content\TestDemo\Aggregate\TestDemoTranslation\TestDemoTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="swag_test_demo_translation"/>
+        </service>
+
+        <!-- Country extension -->
+        <service id="SwagTestDemo\Core\Content\Extension\CountryExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <!--  State Extension -->
+        <service id="SwagTestDemo\Core\Content\Extension\CountryStateExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+        
+        <!-- Product Extension -->
+        <service id="SwagTestDemo\Core\Content\Extension\ProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <!--  MediaExtension -->
+        <service id="SwagTestDemo\Core\Content\Extension\MediaExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <!-- language -->
+        <service id="SwagTestDemo\Core\Content\Extension\LanguageExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+    </services>
+</container>

@@ -1,0 +1,247 @@
+<!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+{% block sw_test_demo_detail %}
+    <sw-page class="sw-test-demo-detail">
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_test_demo_detail_header %}
+            <template #smart-bar-header>
+                <h2>{{ placeholder(testdemo, 'name', $tc('sw-test-demo.detail.textHeadline')) }}</h2>
+            </template>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_test_demo_detail_actions %}
+            <template #smart-bar-actions>
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_test_demo_detail_actions_abort %}
+                    <sw-button
+                            v-tooltip.bottom="tooltipCancel"
+                            :disabled="testdemoIsLoading"
+                            @click="onCancel"
+                    >
+                        {{ $tc('sw-test-demo.detail.buttonCancel') }}
+                    </sw-button>
+                {% endblock %}
+
+                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                {% block sw_test_demo_detail_actions_save %}
+                    <sw-button-process
+                            v-model="isSaveSuccessful"
+                            v-tooltip.bottom="tooltipSave"
+                            class="sw-test-demo-detail__save-action"
+                            :is-loading="isLoading"
+                            :disabled="isLoading || !acl.can('test_demo.editor')"
+                            variant="primary"
+                            @click.prevent="onSave"
+                    >
+                        {{ $tc('sw-test-demo.detail.buttonSave') }}
+                    </sw-button-process>
+                {% endblock %}
+
+            </template>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_test_demo_detail_language_switch %}
+            <template #language-switch>
+                <sw-language-switch
+                        :disabled="testdemoId == null"
+                        :save-changes-function="saveOnLanguageChange"
+                        :abort-change-function="abortOnLanguageChange"
+                        @on-change="onChangeLanguage"
+                />
+            </template>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_test_demo_detail_content %}
+            <sw-card-view slot="content">
+                <template v-if="testdemoIsLoading">
+                    <sw-skeleton variant="detail-bold" />
+                    <sw-skeleton />
+                </template>
+
+                <template v-else>
+
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_test_demo_detail_content_language_info %}
+                        <sw-language-info
+                                :entity-description="placeholder(testdemo, 'name', $tc('sw-test-demo.detail.textHeadline'))"
+                        />
+                    {% endblock %}
+
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_test_demo_detail_base_basic_info_card %}
+                        <sw-card
+                                position-identifier="sw-test-demo-detail-basic-info"
+                                :title="$tc('sw-test-demo.detail.cardTitleTestdemoInfo')"
+                        >
+                            <sw-container
+                                    class="sw-test-demo-detail__container"
+                                    columns="repeat(auto-fit, minmax(250px, 1fr))"
+                                    gap="0 30px"
+                            >
+                                <div class="sw-test-demo-detail__base-info-wrapper">
+
+                                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                                    {% block sw_test_demo_detail_base_info_field_name %}
+                                        <sw-field
+                                                v-model="testdemo.name"
+                                                type="text"
+                                                :label="$tc('sw-test-demo.detail.labelName')"
+                                                :placeholder="placeholder(testdemo, 'name', $tc('sw-test-demo.detail.placeholderName'))"
+                                                name="name"
+                                                validation="required"
+                                                required
+                                                :error="testdemoNameError"
+                                                :disabled="!acl.can('test_demo.editor')"
+                                        />
+                                    {% endblock %}
+
+                                    {% block sw_test_demo_detail_base_info_field_city %}
+                                        <sw-field
+                                                v-model="testdemo.city"
+                                                type="text"
+                                                :label="$tc('sw-test-demo.detail.labelCity')"
+                                                :placeholder="placeholder(testdemo, 'city', $tc('sw-test-demo.detail.placeholderCity'))"
+                                                city="city"
+                                                validation="required"
+                                                required
+                                                :error="testCityError"
+                                                :disabled="!acl.can('test_demo.editor')"
+                                        />
+                                    {% endblock %}
+
+                                    {% block sw_test_demo_detail_country_field %}
+                                        <sw-entity-single-select
+                                                v-model="testdemo.countryId"
+                                                class="sw-test-demo-detail_country-select"
+                                                entity="country"
+                                                :criteria="countryCriteria"
+                                                :label="$tc('sw-test-demo.detail.labelCountryId')"
+                                                :placeholder="$tc('sw-test-demo.detail.placeholderCountryId')"
+                                                {# validation="required"#}
+                                                required
+                                                {# :error="testCountryIdError"#}
+                                                :disabled="!acl.can('test_demo.editor')"
+                                                show-clearable-button
+                                        />
+                                    {% endblock %}
+
+                                    {% block sw_test_demo_detail_state_field %}
+                                        <div
+{#                                                v-if="countryId && hasStates"#}
+                                                class="sw-test-demo-detail__state-select-placeholder"
+                                        >
+                                            <sw-entity-single-select
+                                                    v-model="testdemo.countryStateId"
+                                                    class="sw-test-demo-detail__state-select"
+                                                    entity="country_state"
+                                                    :criteria="stateCriteria"
+                                                    :label="$tc('sw-test-demo.detail.labelCountryStateId')"
+                                                    :placeholder="$tc('sw-test-demo.detail.placeholderCountryStateId')"
+                                                    :required="country && country.forceStateInRegistration"
+                                                    {#:error="testCountryStateIdError"#}
+                                                    :disabled="!acl.can('test_demo.editor')"
+                                                    show-clearable-button
+                                            />
+                                        </div>
+                                    {% endblock %}
+
+                                    {% block sw_test_demo_detail_product_field %}
+                                        <sw-entity-single-select
+                                                v-model="testdemo.productId"
+                                                class="sw-test-demo-detail__product-select"
+                                                entity="product"
+                                                :criteria="productCriteria"
+                                                :label="$tc('sw-test-demo.detail.placeholderProductId')"
+                                                :placeholder="$tc('sw-test-demo.detail.placeholderProductId')"
+                                                :disabled="!acl.can('test_demo.editor')"
+                                                show-clearable-button
+                                        />
+                                    {% endblock %}
+
+                                    {% block sw_test_demo_active_field %}
+                                        <sw-field
+                                                v-model="testdemo.active"
+                                                type="switch"
+                                                bordered
+                                                :disabled="!acl.can('test_demo.editor')"
+                                                :label="$tc('sw-test-demo.detail.placeholderActive')"
+                                        />
+                                    {% endblock %}
+
+                                </div>
+
+                                <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                                {% block sw_test_demo_detail_logo_upload %}
+                                    <sw-upload-listener
+                                            :upload-tag="mediaUploadTag"
+                                            auto-upload
+                                            @media-upload-finish="setMediaItem"
+                                    />
+                                    <sw-media-upload-v2
+                                            class="sw-test-demo-detail__logo-upload"
+                                            :source="testdemo.mediaId"
+                                            :allow-multi-select="false"
+                                            variant="regular"
+                                            :upload-tag="mediaUploadTag"
+                                            :label="$tc('sw-test-demo.detail.labelMediaId')"
+                                            :default-folder="testdemoRepository.entityName"
+                                            :disabled="!acl.can('test_demo.editor')"
+                                            @sw-media-upload-v2-media-upload-success="setMediaItem"
+                                            @media-drop="onDropMedia"
+                                            @media-upload-sidebar-open="openMediaSidebar"
+                                            @media-upload-remove-image="onUnlinkLogo"
+                                    />
+                                {% endblock %}
+                            </sw-container>
+
+
+                        </sw-card>
+                    {% endblock %}
+
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_test_demo_detail_custom_field_sets %}
+                        <sw-card
+                                v-if="customFieldSets.length > 0"
+                                position-identifier="sw-test-demo-detail-custom-field-sets"
+                                :title="$tc('sw-settings-custom-field.general.mainMenuItemGeneral')"
+                                :is-loading="testdemoIsLoading"
+                        >
+                            <sw-custom-field-set-renderer
+                                    v-if="testdemo"
+                                    :entity="testdemo"
+                                    :sets="customFieldSets"
+                                    :disabled="!acl.can('test_demo.editor')"
+                            />
+                        </sw-card>
+                    {% endblock %}
+                </template>
+            </sw-card-view>
+        {% endblock %}
+
+        <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+        {% block sw_test_demo_detail_sidebar %}
+            <template slot="sidebar">
+                <sw-sidebar :propagate-width="true">
+                    <sw-sidebar-media-item
+                            ref="mediaSidebarItem"
+                            :disabled="!acl.can('test_demo.editor')"
+                    >
+                        <template
+                                slot="context-menu-items"
+                                slot-scope="media"
+                        >
+                            <sw-context-menu-item @click="setMediaFromSidebar(media.mediaItem)">
+                                {{ $tc('sw-test-demo.detail.labelUseAsLogo') }}
+                            </sw-context-menu-item>
+                        </template>
+                    </sw-sidebar-media-item>
+                </sw-sidebar>
+            </template>
+        {% endblock %}
+
+    </sw-page>
+{% endblock %}

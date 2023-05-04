@@ -1,0 +1,18 @@
+{
+  "name": "swag/plugin-blog",
+  "description": "Skeleton plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "SwagBlogFinder\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "SwagBlogFinder\\SwagBlogFinder",
+    "label": {
+      "de-DE": "Blog plugin",
+      "en-GB": "Blog plugin"
+    }
+  }
+}
