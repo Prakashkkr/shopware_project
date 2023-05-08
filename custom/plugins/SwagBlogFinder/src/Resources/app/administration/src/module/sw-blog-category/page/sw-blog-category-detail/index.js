@@ -11,7 +11,7 @@ Component.register('sw-blog-category-detail', {
     mixins: [
         Mixin.getByName('placeholder'),
         Mixin.getByName('notification'),
-        Mixin.getByName('discard-detail-page-changes')('blogCategories'),
+        Mixin.getByName('discard-detail-page-changes')('blogCategory'),
     ],
 
     shortcuts: {
@@ -125,7 +125,6 @@ Component.register('sw-blog-category-detail', {
                 this.loadEntityData();
                 return;
             }
-
             Shopware.State.commit('context/resetLanguageToDefault');
             this.blogCategory = this.blogCategoryRepository.create();
         },

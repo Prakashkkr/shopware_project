@@ -119,7 +119,7 @@
             >
                 <sw-custom-field-set-renderer
                     v-if="blogCategory"
-                    :entity="blogCategories"
+                    :entity="blogCategory"
                     :sets="customFieldSets"
                     :disabled="!acl.can('blog_category.editor')"
                 />

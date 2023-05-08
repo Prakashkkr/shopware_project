@@ -79,7 +79,7 @@
                 :is-loading="isLoading"
                 :columns="blogCategoryColumns"
                 :repository="blogCategoryRepository"
-                :items="blogCategorys"
+                :items="blogCategory"
                 :criteria-limit="limit"
                 :sort-by="currentSortBy"
                 :sort-direction="sortDirection"
@@ -93,6 +93,7 @@
                 @page-change="onPageChange"
                 @column-sort="onSortColumn"
             >
+
                 <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                 {% block sw_blog_category_list_grid_columns_name_preview %}
                 <template #preview-name="{ item }">

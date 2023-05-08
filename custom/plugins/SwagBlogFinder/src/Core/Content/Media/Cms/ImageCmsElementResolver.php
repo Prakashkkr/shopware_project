@@ -53,7 +53,6 @@ class ImageCmsElementResolver extends AbstractCmsElementResolver
 
         $criteriaCollection = new CriteriaCollection();
         $criteriaCollection->add('media_' . $slot->getUniqueIdentifier(), MediaDefinition::class, $criteria);
-
         return $criteriaCollection;
     }
 

@@ -98,13 +98,14 @@
                             :disabled="!acl.can('blog_finder.editor')"
                         />
                         {% endblock %}
+
                     </div>
                     {% block sw_blog_detail_base_info_field_release_date%}
                         <sw-field
                                 v-model="blog.release_date"
                                 type="date"
                                 :label="$tc('sw-blog.detail.labelRelease_date')"
-                                :placeholder="placeholder(blog, 'release_date', $tc('sw-blog.detail.placeholderRelease_date'))"
+{#                                :placeholder="placeholder(blog, 'release_date', $tc('sw-blog.detail.placeholderRelease_date'))"#}
                                 name="release_date"
                                 {#validation="required"#}
                                 {#required#}
@@ -133,7 +134,6 @@
                         v-model="blog.blogCategoryId"
                         class="sw-blog-detail__category-select"
                         entity="blog_category"
-                        :criteria="blogCriteria"
                         :label="$tc('sw-blog.detail.labelBlogCategoryId')"
                         :placeholder="$tc('sw-blog.detail.placeholderBlogCategoryId')"
                         :disabled="!acl.can('blog_finder.editor')"

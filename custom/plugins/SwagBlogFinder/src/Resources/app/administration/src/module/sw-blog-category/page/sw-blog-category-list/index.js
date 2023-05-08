@@ -14,7 +14,7 @@ Component.register('sw-blog-category-list', {
 
     data() {
         return {
-            blogCategorys: null,
+            blogCategory: null,
             isLoading: true,
             sortBy: 'name',
             sortDirection: 'ASC',
@@ -43,12 +43,11 @@ Component.register('sw-blog-category-list', {
             }];
         },
 
+
         blogCategoryCriteria() {
             const blogCategoryCriteria = new Criteria(this.page, this.limit);
-
             blogCategoryCriteria.setTerm(this.term);
             blogCategoryCriteria.addSorting(Criteria.sort(this.sortBy, this.sortDirection, this.naturalSorting));
-
             return blogCategoryCriteria;
         },
     },
@@ -76,7 +75,7 @@ Component.register('sw-blog-category-list', {
 
             return this.blogCategoryRepository.search(criteria)
                 .then(searchResult => {
-                    this.blogCategorys = searchResult;
+                    this.blogCategory = searchResult;
                     this.total = searchResult.total;
                     this.isLoading = false;
                 });
