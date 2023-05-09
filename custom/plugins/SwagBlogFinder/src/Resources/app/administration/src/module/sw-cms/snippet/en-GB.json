@@ -6,6 +6,9 @@
       },
       "blogTextImage": {
         "label": "Blog Text Image"
+      },
+      "blogVideo": {
+        "label": "Blog Video"
       }
     },
 

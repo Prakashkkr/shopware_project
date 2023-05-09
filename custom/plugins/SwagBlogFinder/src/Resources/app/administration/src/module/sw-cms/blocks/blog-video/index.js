@@ -1,12 +1,12 @@
 import './component';
-import './preview';
+import './preview'
 
 Shopware.Service('cmsService').registerCmsBlock({
-    name: 'blog-text',
-    label: 'sw-cms.blocks.blogText.label',
-    category: 'text',
-    component: 'sw-cms-block-blog-text',
-    previewComponent: 'sw-cms-preview-blog-text',
+    name: 'blog-video',
+    label: 'sw-cms.blocks.blogVideo.label',
+    category: 'video',
+    component: 'sw-cms-block-blog-video',
+    previewComponent: 'sw-cms-preview-blog-video',
     defaultConfig: {
         marginBottom: '20px',
         marginTop: '20px',
@@ -15,6 +15,6 @@ Shopware.Service('cmsService').registerCmsBlock({
         sizingMode: 'boxed',
     },
     slots: {
-        content: 'blog-text',
+        video: 'blog-video',
     },
 });

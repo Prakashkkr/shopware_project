@@ -47,5 +47,10 @@
             <argument type="service" id="Shopware\Core\Content\Media\Cms\DefaultMediaResolver"/>
         </service>
 
+        <!-- Media video Resolver -->
+        <service id="SwagBlogFinder\Core\Content\Media\Cms\VideoCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
     </services>
 </container>
