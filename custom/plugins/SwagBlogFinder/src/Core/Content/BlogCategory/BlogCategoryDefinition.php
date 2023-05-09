@@ -42,6 +42,7 @@ class BlogCategoryDefinition extends EntityDefinition
                     'blogFinderIds',
                     BlogFinderDefinition::class,
                     'blog_category_id'),
+
                 //Translation
                 new TranslationsAssociationField(
                     BlogCategoryTranslationDefinition::class,

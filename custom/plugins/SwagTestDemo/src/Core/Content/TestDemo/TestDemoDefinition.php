@@ -90,7 +90,6 @@ class TestDemoDefinition extends EntityDefinition
                     TestDemoTranslationDefinition::class,
                     'test_demo_id'
                 )
-            ]
-        );
+        ]);
     }
 }

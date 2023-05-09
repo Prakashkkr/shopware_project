@@ -50,7 +50,7 @@ class BlogFinderDefinition extends EntityDefinition
                 (new BoolField('active','active')),
                  new FkField('blog_category_id','blogCategoryId',BlogCategoryDefinition::class,'id'),
 
-            (new StringField('Author','Author')),
+                (new StringField('Author','Author')),
                 //product association
                 new ManyToManyAssociationField(
                     'products',

@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <!--Bundle_Element Definition -->
+        <service id="SwagBundleElement\Core\Content\BundleElement\BundleElementDefinition">
+            <tag name="shopware.entity.definition" entity="bundle_element"/>
+        </service>
+
+        <!--Bundle_Element Translation -->
+        <service id="SwagBundleElement\Core\Content\BundleElement\Aggregate\BundleElementTranslation\BundleElementTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="bundle_element_translation"/>
+        </service>
+
+        <!--Bundle Definition -->
+        <service id="SwagBundleElement\Core\Content\Bundle\BundleDefinition">
+            <tag name="shopware.entity.definition" entity="bundle"/>
+        </service>
+
+        <!--Bundle Translation -->
+        <service id="SwagBundleElement\Core\Content\Bundle\Aggregate\BundleTranslation\BundleTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="bundle_translation"/>
+        </service>
+
+        <!-- language-->
+        <service id="SwagBundleElement\Core\Content\Extension\LanguageExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <!--Product Extension-->
+        <service id="SwagBundleElement\Core\Content\Extension\ProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+    </services>
+</container>

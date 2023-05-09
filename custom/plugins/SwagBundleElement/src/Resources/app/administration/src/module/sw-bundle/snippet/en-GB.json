@@ -1,0 +1,51 @@
+{
+  "sw-bundle": {
+    "general": {
+      "mainMenuItemList": "Bundles",
+      "mainMenuItemGeneral": "Bundles",
+      "placeholderSearchBar": "Search bundles..."
+    },
+    "list": {
+      "textBundleOverview": "Bundles",
+      "textTotalBundle": "No bundles | One bundle | {count} bundles",
+      "buttonAddBundle": "Add bundle",
+      "columnName": "Name",
+        "columnDescription": "Description",
+        "columnAuthor": "Author",
+      "columnActive": "Active",
+        "columnRelease_date": "Release date",
+        "columnBundleCategoryId": "Category",
+        "columnProductId": "Product"
+
+    },
+    "detail": {
+      "textHeadline": "New bundle",
+      "textMediaSelection": "Media selection",
+      "buttonCancel": "Cancel",
+      "buttonSave": "Save",
+      "cardTitleBundleInfo": "Bundle information",
+      "labelName": "Name",
+      "labelDescription": "Description",
+      "labelRelease_date": "Release Date",
+      "labelAuthor": "Author",
+       "labelBundleCategoryId": "Category",
+        "labelProductId": "Product",
+        "labelActive": "Active",
+      "placeholderName": "Enter bundle name...",
+      "placeholderDescription": "Enter description...",
+        "placeholderAuthor": "Enter author name...",
+        "placeholderBundleCategoryId": "Enter category ...",
+        "placeholderProductId": "Enter product name...",
+      "messageSaveSuccess": "bundle \"{name}\" has been saved.",
+      "labelLogo": "Logo",
+      "labelUseAsLogo": "Use as Logo"
+    }
+  },
+  "sw-privileges": {
+    "permissions": {
+      "bundle": {
+        "label": "Bundles"
+      }
+    }
+  }
+}
