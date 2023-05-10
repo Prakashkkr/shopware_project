@@ -3,6 +3,7 @@ CREATE TABLE `bundle_element` (
     `discount_type` VARCHAR(255) NOT NULL,
     `discount` VARCHAR(255) NULL,
     `quantity` VARCHAR(255) NULL,
+    `bundle_id` BINARY(16) NULL,
     `product_id` BINARY(16) NULL,
     `product_version_id` BINARY(16) NULL,
     `created_at` DATETIME(3) NOT NULL,
@@ -29,7 +30,6 @@ CREATE TABLE `bundle_element_translation` (
 CREATE TABLE `bundle` (
     `id` BINARY(16) NOT NULL,
     `active` TINYINT(1) NULL DEFAULT '0',
-    `bundle_element_id` BINARY(16) NULL,
     `created_at` DATETIME(3) NOT NULL,
     `updated_at` DATETIME(3) NULL,
     PRIMARY KEY (`id`),

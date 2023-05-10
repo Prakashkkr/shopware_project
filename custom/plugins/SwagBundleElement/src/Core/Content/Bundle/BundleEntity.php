@@ -41,11 +41,6 @@ class BundleEntity extends Entity
     protected $position;
 
     /**
-     * @var string|null
-     */
-    protected $bundleElementId;
-
-    /**
      * @var BundleTranslationCollection|null
      */
     protected $translations;
@@ -123,16 +118,6 @@ class BundleEntity extends Entity
     public function setPosition(string $position): void
     {
         $this->position = $position;
-    }
-
-    public function getBundleElementId(): ?string
-    {
-        return $this->bundleElementId;
-    }
-
-    public function setBundleElementId(?string $bundleElementId): void
-    {
-        $this->bundleElementId = $bundleElementId;
     }
 
     public function getTranslations(): ?BundleTranslationCollection

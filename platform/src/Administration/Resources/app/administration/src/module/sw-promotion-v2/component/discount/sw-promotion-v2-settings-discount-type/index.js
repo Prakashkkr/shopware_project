@@ -12,13 +12,11 @@ Component.register('sw-promotion-v2-settings-discount-type', {
         'acl',
         'repositoryFactory',
     ],
-
     props: {
         discount: {
             type: Object,
             required: true,
         },
-
         discountScope: {
             type: String,
             required: true,

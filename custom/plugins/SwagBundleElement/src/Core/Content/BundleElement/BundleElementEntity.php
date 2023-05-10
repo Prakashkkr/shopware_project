@@ -39,6 +39,11 @@ class BundleElementEntity extends Entity
     /**
      * @var string|null
      */
+    protected $bundleId;
+
+    /**
+     * @var string|null
+     */
     protected $productId;
 
     /**
@@ -114,6 +119,16 @@ class BundleElementEntity extends Entity
     public function setQuantity(?string $quantity): void
     {
         $this->quantity = $quantity;
+    }
+
+    public function getBundleId(): ?string
+    {
+        return $this->bundleId;
+    }
+
+    public function setBundleId(?string $bundleId): void
+    {
+        $this->bundleId = $bundleId;
     }
 
     public function getProductId(): ?string

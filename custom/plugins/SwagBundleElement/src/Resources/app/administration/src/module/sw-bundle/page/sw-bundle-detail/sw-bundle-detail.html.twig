@@ -92,67 +92,32 @@
                             :label="$tc('sw-bundle.detail.labelName')"
                             :placeholder="placeholder(bundle, 'name', $tc('sw-bundle.detail.placeholderName'))"
                             name="name"
-                            validation="required"
-                            required
-                            :error="bundleNameError"
                             :disabled="!acl.can('bundle.editor')"
                         />
                         {% endblock %}
-
                     </div>
-                    {% block sw_bundle_detail_base_info_field_release_date%}
-                        <sw-field
-                                v-model="bundle.release_date"
-                                type="date"
-                                :label="$tc('sw-bundle.detail.labelRelease_date')"
-{#                                :placeholder="placeholder(bundle, 'release_date', $tc('sw-bundle.detail.placeholderRelease_date'))"#}
-                                name="release_date"
-                                {#validation="required"#}
-                                {#required#}
-                                {#:error="bundleDescriptionError"#}
-                                :disabled="!acl.can('bundle.editor')"
 
-                        />
-                    {% endblock %}
-                    {% block sw_bundle_detail_base_info_field_author%}
+                    <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
+                    {% block sw_bundle_detail_position %}
                         <sw-field
-                                v-model="bundle.Author"
-                                type="text"
-                                :label="$tc('sw-bundle.detail.labelAuthor')"
-                                :placeholder="placeholder(bundle, 'author', $tc('sw-bundle.detail.placeholderAuthor'))"
-                                name="author"
-                                {#validation="required"#}
-                                {#required#}
-                                {#:error="bundleDescriptionError"#}
-                                :disabled="!acl.can('bundle.editor')"
+                            v-model="bundle.position"
+                            pattern="[0-9]"
+                            :step="1"
+                            :label="$tc('sw-bundle.detail.labelPosition')"
+                            :disabled="!acl.can('bundle.editor')"
+                            :placeholder="$tc('sw-bundle.detail.placeholderPosition')"
                         />
                     {% endblock %}
                 </sw-container>
 
-                {% block sw_bundle_detail_base_info_category_field %}
-                    <sw-entity-single-select
-                        v-model="bundle.bundleCategoryId"
-                        class="sw-bundle-detail__category-select"
-                        entity="bundle"
-                        :label="$tc('sw-bundle.detail.labelbundleCategoryId')"
-                        :placeholder="$tc('sw-bundle.detail.placeholderbundleId')"
+                {% block sw_bundle_detail_base_info_field_headline%}
+                    <sw-field
+                        v-model="bundle.headline"
+                        type="text"
+                        :label="$tc('sw-bundle.detail.labelHeadline')"
+                        :placeholder="placeholder(bundle, 'author', $tc('sw-bundle.detail.placeholderHeadline'))"
+                        name="headline"
                         :disabled="!acl.can('bundle.editor')"
-                        show-clearable-button
-                    />
-                {% endblock %}
-
-                {% block sw_bundle_detail_base_info_product_field %}
-                    <sw-entity-multi-select
-                        size="medium"
-                        entity="product"
-                        :entity-collection="billingProducts"
-                        @change="setProductIds"
-                        class="sw-bundle-detail__product-select"
-{#                        :criteria="productCriteria"#}
-                        :label="$tc('sw-bundle.detail.labelProductId')"
-                        :placeholder="$tc('sw-bundle.detail.placeholderProductId')"
-{#                        :disabled="!acl.can('bundle_finder.editor')"#}
-{#                        show-clearable-button#}
                     />
                 {% endblock %}
 
@@ -163,17 +128,18 @@
                         :placeholder="placeholder(bundle, 'description', $tc('sw-bundle.detail.placeholderDescription'))"
                         name="description"
                         sanitize-input
-                        sanitize-field-name="bundle_finder_translation.description"
-                        :disabled="!acl.can('bundle_finder.editor')"
+                        sanitize-field-name="bundle_translation.description"
+                        :disabled="!acl.can('bundle.editor')"
                     />
                 {% endblock %}
+
 
                 {% block sw_bundle_detail_base_info_active_field %}
                     <sw-field
                         v-model="bundle.active"
                         type="switch"
                         bordered
-                        :disabled="!acl.can('bundle_finder.editor')"
+                        :disabled="!acl.can('bundle.editor')"
                         :label="$tc('sw-bundle.detail.labelActive')"
                     />
                 {% endblock %}

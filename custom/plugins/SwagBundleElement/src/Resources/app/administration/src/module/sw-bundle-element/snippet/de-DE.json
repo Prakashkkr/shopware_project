@@ -1,14 +1,14 @@
 {
-  "sw-bundle": {
+  "sw-manufacturer": {
     "general": {
       "mainMenuItemList": "Hersteller",
       "mainMenuItemGeneral": "Hersteller",
       "placeholderSearchBar": "Durchsuche alle Hersteller ..."
     },
     "list": {
-      "textBundleOverview": "Hersteller",
-      "textTotalBundle": "Keine Hersteller | Ein Hersteller | {count} Hersteller",
-      "buttonAddBundle": "Hersteller anlegen",
+      "textManufacturerOverview": "Hersteller",
+      "textTotalManufacturer": "Keine Hersteller | Ein Hersteller | {count} Hersteller",
+      "buttonAddManufacturer": "Hersteller anlegen",
       "columnName": "Hersteller",
       "columnLink": "Webseite"
     },
@@ -17,7 +17,7 @@
       "textMediaSelection": "Medienauswahl",
       "buttonCancel": "Abbrechen",
       "buttonSave": "Speichern",
-      "cardTitleBundleInfo": "Herstellerinformationen",
+      "cardTitleManufacturerInfo": "Herstellerinformationen",
       "labelName": "Name",
       "labelDescription": "Beschreibung",
       "labelLink": "Webseite",
@@ -31,7 +31,7 @@
   },
   "sw-privileges": {
     "permissions": {
-      "product_bundle": {
+      "product_manufacturer": {
         "label": "Hersteller"
       }
     }

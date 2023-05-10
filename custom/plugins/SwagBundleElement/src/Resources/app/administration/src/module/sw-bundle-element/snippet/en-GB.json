@@ -1,0 +1,49 @@
+{
+  "sw-bundle-element": {
+    "general": {
+      "mainMenuItemList": "BundlesElements",
+      "mainMenuItemGeneral": "BundlesElements",
+      "placeholderSearchBar": "Search bundlesElements..."
+    },
+    "list": {
+      "textbundleElementOverview": "BundlesElements",
+      "textTotalBundleElement": "No bundlesElements | One bundle | {count} bundlesElements",
+      "buttonAddbundleElement": "Add bundle Element",
+      "columnName": "Name",
+        "columnDescription": "Description",
+        "columnHeadline": "Headline",
+      "columnDiscount": "Discount",
+      "columnQuantity": "Quantity",
+        "columnPosition": "Position",
+      "columnDiscount_type": "Discount Type",
+      "columnActive": "Active"
+
+    },
+    "detail": {
+      "textHeadline": "New bundle",
+      "textMediaSelection": "Media selection",
+      "buttonCancel": "Cancel",
+      "buttonSave": "Save",
+      "cardTitlebundleElementInfo": "Bundle information",
+      "labelPosition": "Position",
+        "labelProductId": "Product",
+        "labelBundleId": "Bundle",
+        "labelQuantity": "Quantity",
+      "labelDiscountType": "Discount Type",
+      "labelValue": "Value",
+        "placeholderBundleId": "Select bundle",
+        "placeholderProductId": "Select product",
+        "placeholderPosition": "Enter Position ...",
+      "messageSaveSuccess": "bundle \"{name}\" has been saved.",
+      "labelLogo": "Logo",
+      "labelUseAsLogo": "Use as Logo"
+    }
+  },
+  "sw-privileges": {
+    "permissions": {
+      "bundle-element": {
+        "label": "BundlesElements"
+      }
+    }
+  }
+}

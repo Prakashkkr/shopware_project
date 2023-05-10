@@ -50,26 +50,24 @@ Component.register('sw-bundle-list', {
                 label: 'sw-bundle.list.columnDescription',
                 inlineEdit: 'string',
                 primary: true,
-            },{
-                property: 'Author',
-                dataIndex: 'author',
+            },
+                {
+                property: 'headline',
+                dataIndex: 'headline',
                 allowResize: true,
-                label: 'sw-bundle.list.columnAuthor',
+                label: 'sw-bundle.list.columnHeadline',
                 inlineEdit: 'string',
                 primary: true,
-            },{
-                property: 'release_date',
-                dataIndex: 'release_date',
+                 },
+                {
+                property: 'position',
+                dataIndex: 'position',
                 allowResize: true,
-                label: 'sw-bundle.list.columnRelease_date',
+                label: 'sw-bundle.list.columnPosition',
                 inlineEdit: 'string',
                 primary: true,
-            },{
-                property: 'bundleCategory.name',
-                label: 'sw-bundle.list.columnbundleCategoryId',
-                inlineEdit: 'string',
-                primary: true,
-            },{
+                 },
+                {
                 property: 'active',
                 label: 'sw-bundle.list.columnActive',
                 inlineEdit: 'boolean',
@@ -78,13 +76,12 @@ Component.register('sw-bundle-list', {
             }];
         },
 
-        // bundleCategoryCriteria() {
-        //     const bundleCategoryCriteria = new Criteria(this.page, this.limit);
-        //     bundleCategoryCriteria.addAssociation('bundleCategory');
-        //     bundleCategoryCriteria.setTerm(this.term);
-        //     bundleCategoryCriteria.addSorting(Criteria.sort(this.sortBy, this.sortDirection, this.naturalSorting));
-        //     return bundleCategoryCriteria;
-        // },
+        bundleCriteria() {
+            const bundleCriteria = new Criteria(this.page, this.limit);
+            bundleCriteria.setTerm(this.term);
+            bundleCriteria.addSorting(Criteria.sort(this.sortBy, this.sortDirection, this.naturalSorting));
+            return bundleCriteria;
+        },
     },
 
     methods: {
@@ -95,7 +92,7 @@ Component.register('sw-bundle-list', {
         async getList() {
             this.isLoading = true;
 
-            const criteria = await this.addQueryScores(this.term, this.bundleCategoryCriteria);
+            const criteria = await this.addQueryScores(this.term, this.bundleCriteria);
 
             if (!this.entitySearchable) {
                 this.isLoading = false;

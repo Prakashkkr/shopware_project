@@ -16,6 +16,8 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
+use SwagBlogFinder\Core\Content\BlogCategory\BlogCategoryDefinition;
+use SwagBundleElement\Core\Content\Bundle\BundleDefinition;
 use SwagBundleElement\Core\Content\BundleElement\Aggregate\BundleElementTranslation\BundleElementTranslationDefinition;
 
 class BundleElementDefinition extends EntityDefinition
@@ -45,6 +47,8 @@ class BundleElementDefinition extends EntityDefinition
             (new TranslatedField('position')),
             (new StringField('discount', 'discount'))->addFlags(new ApiAware()),
             (new StringField('quantity', 'quantity'))->addFlags(new ApiAware()),
+            new FkField('bundle_id','bundleId',BundleDefinition::class,'id'),
+
             new FkField('product_id','productId',ProductDefinition::class),
             (new ReferenceVersionField(ProductDefinition::class))->addFlags(new ApiAware(), new Inherited()),
             // product

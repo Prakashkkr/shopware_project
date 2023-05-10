@@ -6,16 +6,14 @@
       "placeholderSearchBar": "Search bundles..."
     },
     "list": {
-      "textBundleOverview": "Bundles",
+      "textbundleOverview": "Bundles",
       "textTotalBundle": "No bundles | One bundle | {count} bundles",
-      "buttonAddBundle": "Add bundle",
+      "buttonAddbundle": "Add bundle",
       "columnName": "Name",
         "columnDescription": "Description",
-        "columnAuthor": "Author",
-      "columnActive": "Active",
-        "columnRelease_date": "Release date",
-        "columnBundleCategoryId": "Category",
-        "columnProductId": "Product"
+        "columnHeadline": "Headline",
+        "columnPosition": "Position",
+      "columnActive": "Active"
 
     },
     "detail": {
@@ -23,19 +21,16 @@
       "textMediaSelection": "Media selection",
       "buttonCancel": "Cancel",
       "buttonSave": "Save",
-      "cardTitleBundleInfo": "Bundle information",
+      "cardTitlebundleInfo": "Bundle information",
       "labelName": "Name",
       "labelDescription": "Description",
-      "labelRelease_date": "Release Date",
-      "labelAuthor": "Author",
-       "labelBundleCategoryId": "Category",
-        "labelProductId": "Product",
+      "labelPosition": "Position",
+      "labelHeadline": "Headline",
         "labelActive": "Active",
       "placeholderName": "Enter bundle name...",
       "placeholderDescription": "Enter description...",
-        "placeholderAuthor": "Enter author name...",
-        "placeholderBundleCategoryId": "Enter category ...",
-        "placeholderProductId": "Enter product name...",
+        "placeholderPosition": "Enter Position ...",
+        "placeholderHeadline": "Enter Headline ...",
       "messageSaveSuccess": "bundle \"{name}\" has been saved.",
       "labelLogo": "Logo",
       "labelUseAsLogo": "Use as Logo"

@@ -42,7 +42,6 @@ class BundleDefinition extends EntityDefinition
             (new TranslatedField('description')),
             (new TranslatedField('headline')),
             (new TranslatedField('position')),
-            new FkField('bundle_element_id','bundleElementId',BundleElementDefinition::class,'id'),
 
             new TranslationsAssociationField(
                 BundleTranslationDefinition::class,

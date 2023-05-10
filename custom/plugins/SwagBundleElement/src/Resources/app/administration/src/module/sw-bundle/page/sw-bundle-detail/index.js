@@ -2,7 +2,6 @@ import template from './sw-bundle-detail.html.twig';
 
 const { Component, Mixin } = Shopware;
 const { EntityCollection, Criteria, Context } = Shopware.Data;
-const { mapPropertyErrors } = Component.getComponentHelper();
 
 Component.register('sw-bundle-detail', {
     template,
@@ -36,7 +35,6 @@ Component.register('sw-bundle-detail', {
             isLoading: false,
             isSaveSuccessful: false,
             billingProducts:null,
-            inputKey: 'productIds',
         };
     },
 
@@ -69,10 +67,7 @@ Component.register('sw-bundle-detail', {
         bundleRepository() {
             return this.repositoryFactory.create('bundle');
         },
-        productCriteria() {
-            const criteria = new Criteria(1, 25);
-            return criteria;
-        },
+
 
         customFieldSetRepository() {
             return this.repositoryFactory.create('custom_field_set');
@@ -111,7 +106,6 @@ Component.register('sw-bundle-detail', {
                 appearance: 'light',
             };
         },
-        ...mapPropertyErrors('bundle', ['name']),
     },
 
     watch: {
@@ -126,13 +120,6 @@ Component.register('sw-bundle-detail', {
 
     methods: {
         createdComponent() {
-
-            this.billingProducts = new EntityCollection(
-                this.productRepository.route,
-                this.productRepository.entityName,
-                // Context.api,
-            );
-
             Shopware.ExtensionAPI.publishData({
                 id: 'sw-bundle-detail__bundle',
                 path: 'bundle',
@@ -145,34 +132,10 @@ Component.register('sw-bundle-detail', {
 
             Shopware.State.commit('context/resetLanguageToDefault');
             this.bundle = this.bundleRepository.create();
-
-        },
-        setProductIds(products) {
-            this.productIds = products.getIds();
-            this.billingProducts = products;
-            this.bundle.products = products;
         },
 
         async loadEntityData() {
             this.isLoading = true;
-            const bundleCriteria = new Criteria();
-            bundleCriteria.addFilter(Criteria.equals('id',this.bundleId))
-            bundleCriteria.addAssociation('products');
-
-            this.bundleRepository.search(bundleCriteria).then((res) =>{
-                this.bundle =res[0];
-                this.billingProducts = this.bundle.products;
-            }).catch((exception) => {
-                this.isLoading = false;
-                this.createNotificationError({
-                    message: this.$tc(
-                        'global.notification.notificationSaveErrorMessageRequiredFieldsInvalid',
-                    ),
-                });
-                throw exception;
-            });
-
-
             const [bundleResponse, customFieldResponse] = await Promise.allSettled([
                 this.bundleRepository.get(this.bundleId),
                 this.customFieldSetRepository.search(this.customFieldSetCriteria),
