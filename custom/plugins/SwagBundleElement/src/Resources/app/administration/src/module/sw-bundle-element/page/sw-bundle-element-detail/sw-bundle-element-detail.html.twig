@@ -148,16 +148,15 @@
                         :label="$tc('sw-bundle-element.detail.labelDiscountType')"
                         :disabled="!acl.can('bundle_element.editor')"
                     >
-
                         <!-- eslint-disable-next-line sw-deprecation-rules/no-twigjs-blocks -->
                         {% block sw_bundle_element_detail_discount_type_option %}
                             <option
-{#                                    v-for="selection in getDiscountTypeSelection()"#}
-{#                                    :key="selection.value"#}
-{#                                    :disabled="selection.disabled"#}
-{#                                    :value="selection.value"#}
+                                    v-for="selection in getDiscountTypeSelection()"
+                                    :key="selection.value"
+                                    :disabled="selection.disabled"
+                                    :value="selection.value"
                             >
-{#                                {{ selection.display }}#}
+                                {{ selection.display }}
                             </option>
                         {% endblock %}
 

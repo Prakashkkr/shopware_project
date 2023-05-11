@@ -146,30 +146,6 @@ Component.register('sw-bundle-element-detail', {
                 return;
             }
 
-            // let config = {
-            //     type: this.bundleElement.type || this.preselectedDiscountType,
-            //     applierKey: this.discount.applierKey || this.preselectedApplyDiscountTo,
-            // };
-
-            // if (this.discountScope === 'basic') {
-            //     config = {
-            //         ...config,
-            //         scope: 'cart',
-            //     };
-            // } else if (this.discountScope === 'buy-x-get-y') {
-            //     config = {
-            //         ...config,
-            //         scope: 'set',
-            //     };
-            // } else if (this.discountScope === 'shipping-discount') {
-            //     config = {
-            //         ...config,
-            //         scope: 'delivery',
-            //     };
-            // }
-
-            // Object.assign(this.bundleElement, config);
-
             Shopware.State.commit('context/resetLanguageToDefault');
             this.bundleElement = this.bundleElementRepository.create();
         },
@@ -197,24 +173,6 @@ Component.register('sw-bundle-element-detail', {
             }
 
             this.isLoading = false;
-        },
-
-
-        getDiscountTypeSelection() {
-            const prefix = 'sw-bundle_element.detail.discounts.settings.discountType.discountTypeSelection';
-            return [{
-                value: 'percentage',
-                display: this.$tc(`${prefix}.displayPercentage`),
-            }, {
-                value: (this.discount.scope === 'delivery' ? 'absolute' : 'fixed'),
-                display: this.$tc(`${prefix}.displayFixedDiscount`),
-            }, {
-                value: 'fixed_unit',
-                display: this.$tc(`${prefix}.displayFixedPrice`),
-            }, {
-                value: 'free',
-                display: this.$tc(`${prefix}.displayFree`),
-            }];
         },
 
         abortOnLanguageChange() {
